@@ -204,7 +204,7 @@ const Eventpage = () => {
         <div className='flex items-center gap-3'>
           {addedPhotos.length > 0 && addedPhotos.map(link => (
             <div key={link}>
-              <img src={'http://localhost:5000/uploads/' + link} alt='' className='rounded-xl' width="150px" height="100px" />
+              <img src={'https://kanaiyali-main.vercel.app/uploads/' + link} alt='' className='rounded-xl' width="150px" height="100px" />
             </div>
           ))}
         </div>
