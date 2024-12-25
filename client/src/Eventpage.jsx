@@ -18,7 +18,7 @@ const Eventpage = () => {
 
   const addpbylink = async (ev) => {
     ev.preventDefault();
-    const { data: filename } = await axios.post("https://kanaiyali-main.vercel.app/upload-by-link", { link: plink });
+    const { data: filename } = await axios.post("https://kanaiyali-main.onrender.com/upload-by-link", { link: plink });
     setAddedphotos(prev => [...prev, filename]);
     setPlink("");
   };
@@ -30,7 +30,7 @@ const Eventpage = () => {
     for (let i = 0; i < files.length; i++) {
       data.append("photo", files[i]);
     }
-    axios.post("https://kanaiyali-main.vercel.app/uploads", data, {
+    axios.post("https://kanaiyali-main.onrender.com/uploads", data, {
       headers: { 'Content-Type': 'multipart/form-data' }
     }).then(res => {
       const { data: filenames } = res;
@@ -43,7 +43,7 @@ const Eventpage = () => {
   const addeventModel = async (ev) => {
     ev.preventDefault();
     const data = { title, subtitle, date, authorName, content, addedPhotos };
-    await axios.post("https://kanaiyali-main.vercel.app/kavithai", data).then(() => {
+    await axios.post("https://kanaiyali-main.onrender.com/kavithai", data).then(() => {
       alert("Content added to Kavithai. Thank you!");
       resetForm();
     });
@@ -52,7 +52,7 @@ const Eventpage = () => {
   const addOviyamModel = async (ev) => {
     ev.preventDefault();
     const data = { title, subtitle, date, authorName, content, addedPhotos };
-    await axios.post("https://kanaiyali-main.vercel.app/oviyam", data).then(() => {
+    await axios.post("https://kanaiyali-main.onrender.com/oviyam", data).then(() => {
       alert("Content added to Oviyam. Thank you!");
       resetForm();
     });
@@ -61,7 +61,7 @@ const Eventpage = () => {
   const addsirukadhaiModel = async (ev) => {
     ev.preventDefault();
     const data = { title, subtitle, date, authorName, content, addedPhotos };
-    await axios.post("https://kanaiyali-main.vercel.app/sirukadhai", data).then(() => {
+    await axios.post("https://kanaiyali-main.onrender.com/sirukadhai", data).then(() => {
       alert("Content added to Sirukadhai. Thank you!");
       resetForm();
     });
@@ -70,7 +70,7 @@ const Eventpage = () => {
   const addputhagamModel = async (ev) => {
     ev.preventDefault();
     const data = { title, subtitle, date, authorName, content, addedPhotos };
-    await axios.post("https://kanaiyali-main.vercel.app/puthaga-vimarsanam", data).then(() => {
+    await axios.post("https://kanaiyali-main.onrender.com/puthaga-vimarsanam", data).then(() => {
       alert("Content added to Puthaga-Vimarsanam. Thank you!");
       resetForm();
     });
@@ -79,7 +79,7 @@ const Eventpage = () => {
   const addvasanamModel = async (ev) => {
     ev.preventDefault();
     const data = { title, subtitle, date, authorName, content, addedPhotos };
-    await axios.post("https://kanaiyali-main.vercel.app/vasanam", data).then(() => {
+    await axios.post("https://kanaiyali-main.onrender.com/vasanam", data).then(() => {
       alert("Content added to Vasanam. Thank you!");
       resetForm();
     });
@@ -88,7 +88,7 @@ const Eventpage = () => {
   const addvidukadhaiModel = async (ev) => {
     ev.preventDefault();
     const data = { title, subtitle, date, authorName, content, addedPhotos };
-    await axios.post("https://kanaiyali-main.vercel.app/vidukadhai", data).then(() => {
+    await axios.post("https://kanaiyali-main.onrender.com/vidukadhai", data).then(() => {
       alert("Content added to Vidukadhai. Thank you!");
       resetForm();
     });
@@ -97,7 +97,7 @@ const Eventpage = () => {
   const addnaatkurippuModel = async (ev) => {
     ev.preventDefault();
     const data = { title, subtitle, date, authorName, content, addedPhotos };
-    await axios.post("https://kanaiyali-main.vercel.app/naatkurippu", data).then(() => {
+    await axios.post("https://kanaiyali-main.onrender.com/naatkurippu", data).then(() => {
       alert("Content added to Naatkurippu. Thank you!");
       resetForm();
     });
@@ -204,7 +204,7 @@ const Eventpage = () => {
         <div className='flex items-center gap-3'>
           {addedPhotos.length > 0 && addedPhotos.map(link => (
             <div key={link}>
-              <img src={'https://kanaiyali-main.vercel.app/uploads/' + link} alt='' className='rounded-xl' width="150px" height="100px" />
+              <img src={'https://kanaiyali-main.onrender.com/uploads/' + link} alt='' className='rounded-xl' width="150px" height="100px" />
             </div>
           ))}
         </div>
