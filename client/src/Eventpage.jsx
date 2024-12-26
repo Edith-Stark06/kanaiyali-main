@@ -30,7 +30,7 @@ const Eventpage = () => {
     for (let i = 0; i < files.length; i++) {
       data.append("photo", files[i]);
     }
-    axios.post("https://kanaiyali-main.onrender.com/uploads", data, {
+    axios.post("https://kanaiyali-main.onrender.com/uploads/", data, {
       headers: { 'Content-Type': 'multipart/form-data' }
     }).then(res => {
       const { data: filenames } = res;

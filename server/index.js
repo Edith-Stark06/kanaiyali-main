@@ -79,7 +79,7 @@ app.post("/naatkurippu", async (req, res) => {
 
 const upload = multer({ dest: 'uploads/' });
 
-app.post("/uploads", upload.array('photo', 100),(req, res) => {
+app.post("/uploads", upload.array('photo', 100), (req, res) => {
   const upfiles = [];
   req.files.forEach(file => {
     const { path, originalname } = file;
@@ -87,10 +87,14 @@ app.post("/uploads", upload.array('photo', 100),(req, res) => {
     const ext = orgparts[orgparts.length - 1];
     const newPath = path + "." + ext;
     fs.renameSync(path, newPath);
-    upfiles.push(newPath.replace("uploads\\", ""));
+    // Store path relative to the '/uploads' directory
+    const relativePath = newPath.replace(__dirname + '/uploads/', '');
+    upfiles.push(relativePath);
+    console.log("File uploaded to:", relativePath);
   });
   res.json(upfiles);
 });
+
 
 app.listen(5000, () => {
   console.log("server is listening...");
