@@ -141,7 +141,7 @@ const Eventpage = () => {
           <input type='text' placeholder='Enter the Author Name' value={authorName} className='border-solid border-2 border-sky-500 w-9/12 px-2 py-2 rounded-xl' onChange={(ev) => setAuthorName(ev.target.value)} />
           <input type='date' placeholder='Enter the event date' value={date} className='border-solid border-2 border-sky-500 w-9/12 px-2 py-2 rounded-xl' onChange={(ev) => setDate(ev.target.value)} />
           <textarea placeholder='Enter the Content' value={content} className='border-solid border-2 border-sky-500 w-9/12 px-2 py-2 rounded-xl' rows="10" onChange={(ev) => setContent(ev.target.value)} />
-          <input type='submit' className='bg-blue-600 w-96 p-2 rounded-xl cursor-pointer text-white' />
+          <button type='submit' className='bg-blue-600 w-96 p-2 rounded-xl cursor-pointer text-white'>Upload</button>
         </form>
         ) : pageType === 'oviyam' ? (
           <form className='mt-10 h-auto border-solid border-2 border-green-500 rounded-2xl flex flex-col justify-center items-center gap-6 p-10 w-8/12' onSubmit={addOviyamModel}>
