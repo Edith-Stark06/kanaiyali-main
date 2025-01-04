@@ -77,6 +77,8 @@ app.post("/naatkurippu", async (req, res) => {
   res.send(eveDoc);
 });
 
+const upload = multer({ dest: 'uploads/' });
+
 app.post('/upload', upload.array('photos'), async (req, res) => {
   try {
     const filenames = req.files.map((file) => file.filename);
