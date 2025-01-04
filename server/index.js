@@ -77,24 +77,15 @@ app.post("/naatkurippu", async (req, res) => {
   res.send(eveDoc);
 });
 
-const upload = multer({ dest: 'uploads/' });
-
-app.post("/uploads", upload.array('photo', 100), (req, res) => {
-  const upfiles = [];
-  req.files.forEach(file => {
-    const { path, originalname } = file;
-    const orgparts = originalname.split(".");
-    const ext = orgparts[orgparts.length - 1];
-    const newPath = path + "." + ext;
-    fs.renameSync(path, newPath);
-    // Store path relative to the '/uploads' directory
-    const relativePath = newPath.replace(__dirname + '/uploads/', '');
-    upfiles.push(relativePath);
-    console.log("File uploaded to:", relativePath);
-  });
-  res.json(upfiles);
+app.post('/upload', upload.array('photos'), async (req, res) => {
+  try {
+    const filenames = req.files.map((file) => file.filename);
+    res.status(200).json({ filenames });
+  } catch (error) {
+    console.error('Error uploading photos:', error);
+    res.status(500).json({ error: 'Failed to upload photos' });
+  }
 });
-
 
 app.listen(5000, () => {
   console.log("server is listening...");

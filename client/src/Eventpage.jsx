@@ -27,18 +27,27 @@ const Eventpage = () => {
     ev.preventDefault();
     const files = ev.target.files;
     const data = new FormData();
+  
     for (let i = 0; i < files.length; i++) {
-      data.append("photo", files[i]);
+      data.append("photos", files[i]);
     }
-    axios.post("http://localhost:5000/uploads/", data, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    }).then(res => {
-      const { data: filenames } = res;
-      setAddedphotos(prev => {
-        return [...prev,...filenames]
+  
+    axios
+      .post("https://kanaiyali-main.onrender.com/upload", data, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((res) => {
+        const filenames = res.data.filenames;
+        setAddedphotos((prev) => {
+          return [...prev, ...filenames];
+        });
+      })
+      .catch((err) => {
+        console.error("Error uploading photos:", err);
+        alert("Failed to upload photos. Please try again.");
       });
-    });
   };
+  
 
   const addeventModel = async (ev) => {
     ev.preventDefault();
